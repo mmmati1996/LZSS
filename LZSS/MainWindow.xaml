@@ -5,8 +5,279 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LZSS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="720" Width="1280">
+
+    <Border Padding="20">
+        <TabControl>
+            <!--#region LZSS-->
+            <TabItem Header="LZSS" >
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Name="textBlock_Info" Margin="20" FontSize="16" Padding="5" Grid.Column="0" Foreground="#FFC70000"/>
+                    </Grid>
+                    
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Label 
+                            Name="label_Dictionary" 
+                            Content="Dictionary Size (must be the power of two):" 
+                            Grid.Column="0" 
+                            Margin="20 20 0 20" 
+                            HorizontalAlignment="Right"
+                        />
+
+                        <TextBox
+                            Name="textBox_Dictionary"
+                            Text="4"
+                            Grid.Column="1"
+                            Margin="0 24 20 22" 
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch" MaxLines="1"
+                            PreviewTextInput="TextBox_Dictionary_PreviewTextInput"
+                            DataObject.Pasting="TextBoxPasting"
+                        />
+
+                        <Label 
+                            Name="label_buffer" 
+                            Content="Buffer Size (must be the power of two):" 
+                            Grid.Column="2" 
+                            Margin="20 20 0 20" 
+                            HorizontalAlignment="Right"
+                        />
+
+                        <TextBox
+                            Name="textBox_Buffer"
+                            Text="4"
+                            Grid.Column="3"
+                            Margin="0 24 20 22" 
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch" MaxLines="1"
+                            PreviewTextInput="TextBox_Dictionary_PreviewTextInput"
+                            DataObject.Pasting="TextBoxPasting"
+                        />
+
+                    </Grid>
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Button
+                            Name="button_OpenFile"
+                            Grid.Column="0"
+                            Content="Open File"
+                            Margin="500,20"
+                            Click="Button_OpenFile_Click"
+                        />
+
+                    </Grid>
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+
+                            <Label
+                                Name="label_Input"
+                                Content="Input:"
+                                Margin="100 20 100 0"
+                            />
+
+                            <ScrollViewer 
+                                VerticalScrollBarVisibility="Visible" 
+                                Margin="100 0 20 20" 
+                                CanContentScroll="True" 
+                                MinHeight="250"
+                                MaxHeight="250">
+
+                                <TextBox 
+                                    Name="textBox_Input"
+                                    TextWrapping="Wrap"
+                                />
+
+                            </ScrollViewer>
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+
+                            <Button
+                                Name="button_Compress"
+                                Content="Compress"
+                                Margin="50 100 50 0"
+                                Click="Button_Compress_Click"
+                                
+                        
+                            />
+
+                            <Button
+                                Name="button_Decompress"
+                                Content="Decompress"
+                                Margin="50 30 50 10"
+                                Click="Button_Decompress_Click"
+                                IsEnabled="False"
+                        
+                            />
+
+                            <TextBox 
+                                Name="textBlock_Time"
+                                Margin="50 30 50 0"
+                                IsReadOnly="True"
+                               
+                             />
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+
+                            <Label
+                                Name="label_Output"
+                                Content="Output:"
+                                Margin="20 20 100 0"
+                            />
+
+                            <ScrollViewer 
+                                VerticalScrollBarVisibility="Visible" 
+                                Margin="20 0 100 20" 
+                                CanContentScroll="True" 
+                                MinHeight="250"
+                                MaxHeight="250">
+
+                                <TextBox 
+                                    Name="textBox_Output"
+                                    TextWrapping="Wrap"
+                                />
+
+                            </ScrollViewer>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Button
+                            Name="button_SaveFile"
+                            Grid.Column="0"
+                            Content="Save File"
+                            Margin="500,20"
+                            Click="Button_SaveFile_Click"
+                        />
+
+                    </Grid>
+
+                </StackPanel>
+                
+                
+            </TabItem>
+            <!--#endregion-->
+            <TabItem Header="Statistics">
+                <StackPanel>
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0">
+
+                            <Label
+                                Name="label_Input_Statistics"
+                                Content="Input:"
+                                Margin="20 20 20 0"
+                            />
+
+                            <ScrollViewer 
+                                VerticalScrollBarVisibility="Visible" 
+                                Margin="20 0 20 20" 
+                                CanContentScroll="True" 
+                                MinHeight="500"
+                                MaxHeight="500">
+
+                                <TextBox 
+                                    Name="textBox_Input_Statistics"
+                                    TextWrapping="Wrap"
+                                />
+
+                            </ScrollViewer>
+                            
+                            <Button
+                                Name="button_OpenFile_Statistics"
+                                Content="Open File"      
+                                Click="Button_OpenFile_Statistics_Click"
+                                Margin="200 0 200 0"
+                            />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+
+                            <Label
+                                Name="label_Output_Statistics"
+                                Content="Output:"
+                                Margin="20 20 20 0"
+                            />
+
+                            <ScrollViewer 
+                                VerticalScrollBarVisibility="Visible" 
+                                Margin="20 0 20 20" 
+                                CanContentScroll="True" 
+                                MinHeight="500"
+                                MaxHeight="500">
+
+                                <TextBox 
+                                    Name="textBox_Output_Statistics"
+                                    TextWrapping="Wrap"
+                                    IsReadOnly="True"
+                                    
+                                />
+
+                            </ScrollViewer>
+
+                            <Button
+                                Name="button_SaveFile_Statistics"
+                                Content="Save File"      
+                                Click="Button_SaveFile_Statistics_Click"
+                                Margin="200 0 200 0"
+                            />
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Border>
+
 </Window>
